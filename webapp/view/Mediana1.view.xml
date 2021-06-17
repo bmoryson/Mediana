@@ -7,9 +7,9 @@
 					<content>
 						<VBox justifyContent="End" id="Tabelle">
 							<HBox>
-								<Input id="i_numb" width="50px" maxLength="3" liveChange="onLiveChange" textAlign="Center"></Input>
-								<HBox width="50px" justifyContent="End">
-									<Button id="btn_Add" text="Add" press="onAdd" type="Transparent"></Button>
+								<Input id="i_numb" width="50px"  liveChange="onLiveChange" textAlign="Center"></Input>
+								<HBox width="70px" justifyContent="End">
+									<Button id="btn_Add" text="Add" press="onAdd" type="Transparent" icon="sap-icon://add"></Button>
 								</HBox>
 								<HBox width="550px" justifyContent="End">
 									<Text id="txt_result" text="" width="auto" visible="false"></Text>

@@ -15,7 +15,7 @@ sap.ui.define([
 			for (var int in array1) {
 				array.push(parseInt(array1[int]));
 			}
-
+			array1 = undefined;
 			function compareNumbers(a, b) {
 				if (a < b)
 					return -1;
@@ -26,12 +26,20 @@ sap.ui.define([
 			}
 
 			array.sort(compareNumbers);
-			var result, counter, numb;
+			var result, counter, numb, rightOrder;
+
+			for (var i in array) {
+				if (rightOrder === undefined)
+					rightOrder = array[i];
+				else
+					rightOrder = rightOrder + ", " + array[i];
+			}
+			this.byId("txt_sum").setValue(rightOrder);
 
 			if (array.length % 2 === 0) {
 				counter = (array.length / 2) - 1;
 				numb = counter + 1;
-				result = "Mediana podanego zbioru wynosi: " + (parseInt(array[counter]) + parseInt(array[numb])) / 2;
+				result = "Mediana podanego zbioru wynosi: " + (array[counter] + array[numb]) / 2;
 			} else {
 				counter = (array.length / 2) + 0.5;
 				counter--;
@@ -65,9 +73,11 @@ sap.ui.define([
 		onLiveChange: function (oEvent) {
 			var sNumber = "";
 			var value = oEvent.getSource().getValue();
-			var notNumber = isNaN(value);
-			if (notNumber === false) sNumber = value;
-			else oEvent.getSource().setValue(sNumber);
+			if (value !== "-") {
+				var notNumber = isNaN(value);
+				if (notNumber === false) sNumber = value;
+				else oEvent.getSource().setValue(sNumber);
+			}
 		}
 
 	});
