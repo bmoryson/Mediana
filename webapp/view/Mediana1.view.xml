@@ -1,9 +1,27 @@
-<mvc:View controllerName="Mediana.Mediana1.controller.Mediana1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="Mediana.Mediana1.controller.Mediana1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.f" xmlns:table="sap.ui.table" xmlns:tnt="sap.tnt">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<content>
+						<VBox justifyContent="End" id="Tabelle">
+							<HBox>
+								<Input id="i_numb" width="50px" maxLength="3" liveChange="onLiveChange" textAlign="Center"></Input>
+								<HBox width="50px" justifyContent="End">
+									<Button id="btn_Add" text="Add" press="onAdd" type="Transparent"></Button>
+								</HBox>
+								<HBox width="550px" justifyContent="End">
+									<Text id="txt_result" text="" width="auto" visible="false"></Text>
+								</HBox>
+							</HBox>
+							<TextArea id="txt_sum" value="" width="auto" enabled="false" height="auto" visible="false"></TextArea>
+							<HBox>
+								<Button id="btn_Calculate" text="Calculate" press="onCalculate" type="Success"></Button>
+								<Button id="btn_Refresh" text="Refresh" icon="sap-icon://refresh" press="onRefresh" type="Emphasized"></Button>
+							</HBox>
+						</VBox>
+					</content>
 				</Page>
 			</pages>
 		</App>
