@@ -9,44 +9,47 @@ sap.ui.define([
 		},
 
 		onCalculate: function (oEvent) {
+			if (this.byId("txt_sum").getValue() !== undefined && this.byId("txt_sum").getValue() !== "") {
 
-			var array1 = this.byId("txt_sum").getValue().split(", ");
-			var array = [];
-			for (var int in array1) {
-				array.push(parseInt(array1[int]));
-			}
-			array1 = undefined;
-			function compareNumbers(a, b) {
-				if (a < b)
-					return -1;
-				if (a > b)
-					return 1;
-				else
-					return 0;
-			}
+				var array1 = this.byId("txt_sum").getValue().split(", ");
+				var array = [];
+				for (var int in array1) {
+					array.push(parseInt(array1[int]));
+				}
+				array1 = undefined;
 
-			array.sort(compareNumbers);
-			var result, counter, numb, rightOrder;
+				function compareNumbers(a, b) {
+					if (a < b)
+						return -1;
+					if (a > b)
+						return 1;
+					else
+						return 0;
+				}
 
-			for (var i in array) {
-				if (rightOrder === undefined)
-					rightOrder = array[i];
-				else
-					rightOrder = rightOrder + ", " + array[i];
-			}
-			this.byId("txt_sum").setValue(rightOrder);
+				array.sort(compareNumbers);
+				var result, counter, numb, rightOrder;
 
-			if (array.length % 2 === 0) {
-				counter = (array.length / 2) - 1;
-				numb = counter + 1;
-				result = "Mediana podanego zbioru wynosi: " + (array[counter] + array[numb]) / 2;
-			} else {
-				counter = (array.length / 2) + 0.5;
-				counter--;
-				result = "Mediana podanego zbioru wynosi: " + array[counter];
+				for (var i in array) {
+					if (rightOrder === undefined)
+						rightOrder = array[i];
+					else
+						rightOrder = rightOrder + ", " + array[i];
+				}
+				this.byId("txt_sum").setValue(rightOrder);
+
+				if (array.length % 2 === 0) {
+					counter = (array.length / 2) - 1;
+					numb = counter + 1;
+					result = "Mediana podanego zbioru wynosi: " + (array[counter] + array[numb]) / 2;
+				} else {
+					counter = (array.length / 2) + 0.5;
+					counter--;
+					result = "Mediana podanego zbioru wynosi: " + array[counter];
+				}
+				this.byId("txt_result").setText(result);
+				this.byId("txt_result").setVisible(true);
 			}
-			this.byId("txt_result").setText(result);
-			this.byId("txt_result").setVisible(true);
 		},
 
 		onRefresh: function (oEvent) {

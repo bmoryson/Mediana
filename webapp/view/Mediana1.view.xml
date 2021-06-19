@@ -12,7 +12,7 @@
 									<Button id="btn_Add" text="Add" press="onAdd" type="Transparent" icon="sap-icon://add"></Button>
 								</HBox>
 								<HBox width="550px" justifyContent="End">
-									<Text id="txt_result" text="" width="auto" visible="false"></Text>
+									<Text id="txt_result" text="Wprowadź ciąg liczb przy pomocy przycisku Add" width="auto" visible="true"></Text>
 								</HBox>
 							</HBox>
 							<TextArea id="txt_sum" value="" width="auto" enabled="false" height="auto" visible="false"></TextArea>
